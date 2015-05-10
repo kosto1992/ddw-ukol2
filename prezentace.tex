@@ -1,0 +1,56 @@
+\documentclass[11pt]{beamer}
+\usetheme{Warsaw}
+\usepackage[utf8]{inputenc}
+\usepackage[slovak]{babel}
+\usepackage[T1]{fontenc}
+
+\author{Lukáš Koštenský}
+\title{Získanie pravidiel pre odporúčanie produktov}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{} 
+\institute{MI-DDW} 
+%\date{} 
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\begin{frame}
+%\tableofcontents
+%\end{frame}
+
+\begin{frame}{Popis aplikácie}
+
+\section{Dataset}
+Použil som vzorový dataset obsahujúci informácie o obsahu nákupneho košíku nakupujúceho. Tento dataset je dostupný na internetovej stránke http://www.sevana.fi/sample1.xls
+
+\section{Predspracovanie}
+
+RapidMiner po načítaní Excel súboru použije:
+
+„Nominal to Binominal“, ktorý prevedie atribúty s viac hodnotami ako dvoma do binárnych hodnôt. To je potrebné spraviť, pretože asociačné pravidlá pracujú len s binárnymi atribútmi.
+
+„FP-Growth“ - predzpracuje dáta, musel som znížiť min-support, resp. vynútiť minimálny počet výsledkov.
+
+„Create Association Rules“ generuje asociačné pravidla.
+\end{frame}
+\begin{frame}{Výsledky a použité nástroje}
+
+\section{Výsledky}
+Výsledkom spracovania je súbor pravidiel. Podľa toho, čo už zákazník nakúpil, vieme určiť čo bude chcieť k týmto veciam dokúpiť.
+
+Pr.
+Association Rules
+[mouse = USB cable] --> [DVD ROM = keyboard] (confidence: 1.000)
+[keyboard = MP3 player] --> [DVD ROM = keyboard] (confidence: 1.000)
+...
+
+Použité nástroje:
+\begin{enumerate}
+\item RapidMiner 
+\end{enumerate}
+\end{frame}
+
+\end{document}
